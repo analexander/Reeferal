@@ -4,27 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width", initial-scale=1.0>
     <title>Reeferal</title>
-    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic">
     <link rel="stylesheet" type="text/css" href="Assets/style.css">
 </head>
 <body>
+  <div style="overflow: hidden;height: 250px;"> <!-- For Demo, Represents the body -->
 
-  <!-- Trigger/Open The Modal -->
-<button id="myBtn">Open Modal</button>
+    <nav class="demo">
+      <a href="#" class="brand">
+        <!-- <img class="logo" src="/img/basket.png" /> -->
+        <span>Reeferal</span>
+      </a>
+    
+      <!-- responsive-->
+      <input id="bmenub" type="checkbox" class="show">
+      <label for="bmenub" class="burger pseudo button">menu</label>
+    
+      <div class="menu">
+        <a href="#" class="pseudo button icon-picture">view all strains</a>
+        <a href="#" class="button icon-puzzle">find a dispensary</a>
+      </div>
+    </nav>
+    
+    </div>
 
-<!-- The Modal -->
-<div id="myModal" class="modal">
+    <label for="modal_1" class="button">Show modal</label>
 
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <p>Suggested strains:</p>
-  </div>
-
-</div>
+    <div class="modal">
+      <input id="modal_1" type="checkbox" />
+      <label for="modal_1" class="overlay"></label>
+      <article>
+        <header>
+          <h3>Strains suggested for you:</h3>
+          <label for="modal_1" class="close">&times;</label>
+        </header>
+        <section class="content">
+          -insert strains here-
+        </section>
+        <footer>
+          <a class="button" href="#">Cool!</a>
+          <label for="modal_1" class="button dangerous">
+            Cancel
+          </label>
+        </footer>
+      </article>
+    </div>
     <!-- jQuery JS -->
   <script src="https://code.jquery.com/jquery.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
   <!-- Code to the JavaScript File -->
   <script src="Javascript/script.js"></script>
 </body>
