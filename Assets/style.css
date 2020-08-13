@@ -1,0 +1,109 @@
+body {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 18px;
+    text-align: justify;
+    line-height: 34px;
+    color: #777;
+    background: url("../Assets/leaf.jpg");
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    clear: both;
+}
+
+#masthead {
+    position: fixed;
+    z-index: 99;
+    width: 100%;
+    margin: 0 0 30px;
+    overflow: auto;
+    color: #fff;
+    background: #fff;
+    border-bottom: 2px solid #ccc;
+}
+#logo {
+    float: left;
+    width: 300px;
+    height: 70px;
+    font-family: Georgia, Times, "Times New Roman", serif;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 80px;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    background: #189e6b;
+    border-radius: 15px;
+}
+
+nav {
+    float: right;
+    height: 70px;
+}
+  
+nav a {
+    display: inline-block;
+    padding-left: 15px;
+    margin-left: 15px;
+    line-height: 18px;
+    color: #999;
+    text-decoration: none;
+    border-left: 1px solid #efefef;
+}
+  
+nav a:first-child {
+    border-left: 0 none;
+}
+
+.cannabis {
+    width: 40px;
+    height: 40px;
+    margin-right: 5px;
+    margin-left: 15px;
+    align-content: center;
+    color: white;
+}
+
+#resultsBox {
+    width: 800px;
+    align-content: center;
+    margin-left: 200px;
+    margin-right: 200px;
+    height: flex;
+    margin-bottom: 200px;
+    border-radius: 15px;
+}
+
+h2 {
+    text-align: center;
+}
+
+
+@media only screen and (min-width: 980px) {
+
+    body { 
+        margin: 0 auto; 
+    }
+      
+    .portfolio{
+      float: none;
+      width: 100%;
+    }    
+}
+  
+@media only screen and (max-width: 979px) and (min-width: 768px) {
+    .container {
+      max-width: 700px;
+    }
+  
+    body { 
+        margin: 0 auto; 
+    }
+}
