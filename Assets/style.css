@@ -4,7 +4,7 @@ body {
     text-align: justify;
     line-height: 34px;
     color: #777;
-    background: url("../images/tic-tac-toe.png");
+    background: url("../Assets/leaf.jpg");
 }
 
 * {
@@ -31,19 +31,21 @@ body {
 #logo {
     float: left;
     width: 300px;
-    height: 90px;
+    height: 70px;
     font-family: Georgia, Times, "Times New Roman", serif;
     font-size: 30px;
     font-weight: 700;
-    line-height: 90px;
+    line-height: 80px;
     color: #fff;
     text-align: center;
     text-decoration: none;
-    background: #3e997e;
+    background: #189e6b;
+    border-radius: 15px;
 }
+
 nav {
     float: right;
-    margin-top: 25px;
+    height: 70px;
 }
   
 nav a {
@@ -63,12 +65,26 @@ nav a:first-child {
 .cannabis {
     width: 40px;
     height: 40px;
-    margin-top: 8px;
     margin-right: 5px;
-    margin-left: 10px;
+    margin-left: 15px;
     align-content: center;
     color: white;
 }
+
+#resultsBox {
+    width: 800px;
+    align-content: center;
+    margin-left: 200px;
+    margin-right: 200px;
+    height: flex;
+    margin-bottom: 200px;
+    border-radius: 15px;
+}
+
+h2 {
+    text-align: center;
+}
+
 
 @media only screen and (min-width: 980px) {
 
