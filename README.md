@@ -14,4 +14,5 @@
 * Users may locate dispensaries in their area underneath the "Find Dispensaries" tab in the navigation menu.
 
 ## Links:
-[Refrence Your Reefer Here](https://analexander.github.io/Project-1/)
+
+[Reference Your Reefer Here](https://analexander.github.io/Project-1/)

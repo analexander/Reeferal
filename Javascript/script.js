@@ -63,5 +63,3 @@ var queryURL = "https://strainapi.evanbusse.com/zOfVj0g/searchdata/effects";
 
 document.getElementById('modal_1').checked = true; // open modal
 document.getElementById('modal_1').checked = false; // close modal
-*/
-}
