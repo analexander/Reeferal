@@ -85,6 +85,14 @@ h2 {
     text-align: center;
 }
 
+.button {
+    background-color: #189e6b;
+}
+
+#faveBtn {
+    background-color: #e9b0b0;
+}
+
 
 @media only screen and (min-width: 980px) {
 
