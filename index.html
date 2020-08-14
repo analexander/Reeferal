@@ -8,9 +8,9 @@
   <link rel="stylesheet" type="text/css" href="Assets/style.css">
 </head>
 <body>
-  <header>
-    <div style="overflow: hidden;height: 70px;"> <!-- For Demo, Represents the body -->
-      <nav>
+  <header id="masthead">
+    <div style="overflow: hidden;height: 70px;" class="container"> <!-- For Demo, Represents the body -->
+      <nav class="demo">
         <a href="index.html" id="logo">Reeferal
           <img class="cannabis" src="Assets/weed.png" alt="cannabis leaf">
         <!-- <img class="logo" src="/img/basket.png" /> -->
@@ -19,27 +19,30 @@
         <input id="bmenub" type="checkbox" class="show">
         <label for="bmenub" class="burger pseudo button">menu</label>
         <div class="menu">
-          <a href="#" class="pseudo button icon">view all strains</a>
-          <a href="map.html" class="button icon">find a dispensary</a>
+          <a href="#" class="pseudo button icon-picture" id="allBtn">Favorite Strains</a>
+          <a href="map.html" class="button icon-puzzle" id="findBtn">Find a Dispensary</a>
         </div>
       </nav>
     </div>
   </header>
-    <!--Show modal button-->
-    <label for="modal_1" class="button">Show modal</label>
-    <!--Modal-->
-    <div class="modal" id="myModal">
-      <input id="modal_1" type="checkbox"/>
-      <label for="modal_1" class="overlay"></label>
-      <article>
-        <header>
-          <h3>Welcome to Reeferal!</h3>
-          <label for="modal_1" class="close">&times;</label>
-        </header>
-        <section class="content">
-          <h3>What's your flavor?</h3>
-          <!--Dropdown Search Parameters-->
-          <select>
+    <!--Search Box-->
+    <div id="main-container" class="container">
+      <section class="main-section" id="resultsBox">
+        <!--Show modal button-->
+        <label for="modal_1" class="button" id="queryBtn">Find Your Best Bud<img class="bud" src="Assets/bestbud.png" alt="hands holding plant"></label>
+        <!--Modal-->
+        <div class="modal" id="myModal">
+          <input id="modal_1" type="checkbox"/>
+        <label for="modal_1" class="overlay"></label>
+        <article>
+          <header id="modalBox">
+            <h3>Welcome to Reeferal!</h3>
+            <label for="modal_1" class="close">&times;</label>
+          </header>
+          <section class="content">
+            <h3>What's your flavor?</h3>
+            <!--Dropdown Search Parameters-->
+            <select>
             <option>Type</option>
             <option>Any</option>
             <option>Indica</option>
@@ -55,37 +58,39 @@
             <option>Indica</option>
             <option>Sativa</option>
             <option>Hybrid</option>
-          </select>
-        </section>
-        <footer>
-          <a class="button" id="submitBtn" href="#">Submit</a>
+            </select>
+          </section>
+          <a class="button" id="submitBtn" href="#" onclick="searchStrains()">Refer some Reefer</a>
           <label for="modal_1" class="button dangerous">
             Cancel
           </label>
-        </footer>
-      </article>
-    </div>
-    <!--Search Results-->
-    <div>
-      <div>
-        <article class="card" id="resultsBox">
-          <footer>
-            <h2>Search Results</h2>
-            <section id="searchResults"><section>
-                  <input type="text" class="form-control" id="search" placeholder="Search Photos">
-                  <button onclick="SearchPhotos()">Search</button>
-                  <div id="result">
-
-                  </div>
-            <button id="faveBtn">♡</button>
-          </footer>
         </article>
+      </div>  
+      <!--Search Results-->
+      <div class="container">
+        <h2>Reefer-ences 🌿</h2>
+          <section class="card" id="searchResults"><section>
+            <input type="text" class="form-control" id="search" placeholder="Search Photos">
+            <button onclick="searchPhotos()">Search</button>
+            <div id="photoResult">
+
+            </div>
+            <button id="faveBtn">♡</button>
+          </section>
+          </section>
+        </section>
       </div>
-    </div>
-            <!-- jQuery JS -->
+
+    <footer>
+      <div class="container">
+      &copy; Copyright 2020 
+      </div>
+    </footer>	
+    <!-- jQuery JS -->
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Code to the JavaScript File -->
-  <script src="Javascript/script.js"></script>
+  <script src="Javascript/script.js"></script>  
+      
 </body>
 </html>

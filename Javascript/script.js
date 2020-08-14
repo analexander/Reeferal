@@ -1,37 +1,61 @@
-function SearchPhotos() {
-  let clientId = 
-    "5fuRzTbXAYgl66d48PXBVa1WFSnqN8JSpO0VFqxIXtA";
+//Establishes query URL and API Key for --Upsplash--
+function searchPhotos() {
+  let clientId = "5fuRzTbXAYgl66d48PXBVa1WFSnqN8JSpO0VFqxIXtA";
   let query = document.getElementById("search").value;
-  let url = 
-    "https://api.unsplash.com/search/photos/?client_id=" + 
+  let url = "https://api.unsplash.com/search/photos/?client_id=" + 
     clientId + 
     "&query=" +
     query;
 
-  // Make request to API
-
-    fetch(url)
-      .then(function(data) {
-        return data.json();
-      })
-      .then(function(data) {
-        console.log(data);
+  // Make request to API to fetch photos from Upsplash -AA
+  fetch(url)
+    .then(function(data) {
+      return data.json();
+    })
+    .then(function(data) {
+      console.log(data);
 
         data.results.forEach(photo => {
 
-          let result = `
-            <img src="${photo.urls.regular}">
-            <a href="${photo.links.download}">
-          `;
-          
-          $("#result").html(result);
-      });
-  });
-}
-// function searchStrain(strainid) {
-//   //URL for querying API
-//   var queryURL = "https://strainapi.evanbusse.com/zOfVj0g";
 
+        let result = `
+          <img src="${photo.urls.regular}">
+          <a href="${photo.links.download}">
+        `;
+        
+        $("#photoResult").html(result);
+    });
+});
+
+/*Establishes query URL and API key for --EvanBusse Strain API--
+function searchStrains() {
+  let userId = "zOfVj0g"
+  let strainQuery = document.getElementById("submitBtn").value;
+  let queryUrl = "http://strainapi.evanbusse.com/strains/search/flavor/FLAVOR/?client_id=" +
+  userId + 
+  "&query=" +
+  strainQuery;
+  
+  //Make Request to EBS API to fetch strain data -AA
+fetch(url)
+  .then(function(data) {
+    return data.json();
+  })
+  .then(function(data) {
+    console.log(data);
+
+    data.results.forEach(name => {
+      let result =`<li class='list-group-item src="${name.urls.regular}">
+      `;
+
+      $("#strainResults").html(result);
+
+    });
+});
+
+/*function searchStrain(strainid) {
+  //URL for querying API
+  var queryURL = "https://strainapi.evanbusse.com/zOfVj0g";
   
 // $.ajax({
 //   url: queryURL,
@@ -73,3 +97,5 @@ getFlavor();
 
 document.getElementById('modal_1').checked = true; // open modal
 document.getElementById('modal_1').checked = false; // close modal
+
+*/
