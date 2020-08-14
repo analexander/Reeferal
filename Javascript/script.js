@@ -15,7 +15,8 @@ function searchPhotos() {
     .then(function(data) {
       console.log(data);
 
-      data.results.forEach(photo => {
+        data.results.forEach(photo => {
+
 
         let result = `
           <img src="${photo.urls.regular}">
@@ -55,26 +56,24 @@ fetch(url)
 /*function searchStrain(strainid) {
   //URL for querying API
   var queryURL = "https://strainapi.evanbusse.com/zOfVj0g";
-
   
-$.ajax({
-  url: queryURL,
-  method: "GET"
-}).then(function(response) {
-  console.log(response);
-  console.log(queryURL);
-  $("#searchResults").empty();
+// $.ajax({
+//   url: queryURL,
+//   method: "GET"
+// }).then(function(response) {
+//   console.log(response);
+//   console.log(queryURL);
+//   $("#searchResults").empty();
 
 
-// Printing the entire object to console
-console.log(response);
-});
-}
+// // Printing the entire object to console
+// console.log(response);
+// });
+// }
 
-//----------------
+var queryURL = "https://strainapi.evanbusse.com/zOfVj0g/searchdata/flavors";
 
-var queryURL = "https://strainapi.evanbusse.com/zOfVj0g/searchdata/effects";
-
+function getFlavor() {
     $.ajax({
       url: queryURL,
       method: "GET"
@@ -82,8 +81,19 @@ var queryURL = "https://strainapi.evanbusse.com/zOfVj0g/searchdata/effects";
 
       // Printing the entire object to console
       console.log(response);
-
+      appendFlavor(response);
     });
+
+    function appendFlavor (response) {
+    var option = '';
+    for (var i=0;i<response.length;i++){
+       option += '<option value="'+ response[i] + '">' + response[i] + '</option>';
+    }
+    $('#flavor-dropdown').append(option);
+    }
+  };
+
+getFlavor();
 
 document.getElementById('modal_1').checked = true; // open modal
 document.getElementById('modal_1').checked = false; // close modal
