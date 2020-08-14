@@ -19,8 +19,12 @@
         <input id="bmenub" type="checkbox" class="show">
         <label for="bmenub" class="burger pseudo button">menu</label>
         <div class="menu">
-          <a href="#" class="pseudo button icon">view all strains</a>
-          <a href="map.html" class="button icon">find a dispensary</a>
+          <a href="#" class="pseudo button icon-picture">view all strains</a>
+          <a href="#" class="button icon-puzzle">find a dispensary</a>
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" id="zipcodeInput" placeholder="Zip Code" aria-label="Recipient's username" aria-describedby="button-addon2">
+            <div class="input-group-append">
+          </div>
         </div>
       </nav>
     </div>
@@ -76,20 +80,14 @@
           <footer>
             <h2>Search Results</h2>
             <section id="searchResults"><section>
-                  <input type="text" class="form-control" id="search" placeholder="Search Photos">
-                  <button onclick="SearchPhotos()">Search</button>
-                  <div id="result">
-
-                  </div>
             <button id="faveBtn">♡</button>
           </footer>
         </article>
       </div>
-    </div>
-            <!-- jQuery JS -->
+      <div>
+    <!-- jQuery JS -->
   <script src="https://code.jquery.com/jquery.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- Code to the JavaScript File -->
+  <!-- Code to the JavaScript File -->
   <script src="Javascript/script.js"></script>
 </body>
 </html>
