@@ -87,8 +87,5 @@ var queryURL = "https://strainapi.evanbusse.com/zOfVj0g/searchdata/effects";
 
 document.getElementById('modal_1').checked = true; // open modal
 document.getElementById('modal_1').checked = false; // close modal
-<<<<<<< HEAD
-*/
-  }
-=======
->>>>>>> 58cab9397a81696edebc61a79ac78b1a712f96f4
+}
+*/}
