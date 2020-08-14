@@ -97,5 +97,5 @@ getFlavor();
 
 document.getElementById('modal_1').checked = true; // open modal
 document.getElementById('modal_1').checked = false; // close modal
-
-*/
+}
+*/}
