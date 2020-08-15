@@ -1,3 +1,11 @@
+//populates dropdown menus in modal
+function onLoad(){
+  populateFlavors();
+  populateEffects();
+  loadStrains();
+}
+
+
 //Establishes query URL and API Key for --Upsplash--
 function searchPhotos() {
   let clientId = "5fuRzTbXAYgl66d48PXBVa1WFSnqN8JSpO0VFqxIXtA";
@@ -26,76 +34,112 @@ function searchPhotos() {
         $("#photoResult").html(result);
     });
 });
+}
 
-/*Establishes query URL and API key for --EvanBusse Strain API--
-function searchStrains() {
-  let userId = "zOfVj0g"
-  let strainQuery = document.getElementById("submitBtn").value;
-  let queryUrl = "http://strainapi.evanbusse.com/strains/search/flavor/FLAVOR/?client_id=" +
-  userId + 
-  "&query=" +
-  strainQuery;
+//strain API functions
+
+function searchStrains(){
+  var desiredRace = $("#race-dropdown option:selected").text();
+  var desiredFlavor = $("#flavor-dropdown option:selected").text();
+  var desiredEffect = $("#effect-dropdown option:selected").text();
+  var foundStrains = [];
+
+  var strainData = JSON.parse(localStorage.getItem("strainData"));
+
+  if(!strainData){
+    console.log('Whoops, cant find strain data');
+    return;
+  }
+
+  var keys = Object.keys(strainData);
+
+  keys.forEach(function(key){
+    var strain = strainData[key];
+    //console.log(key);
+    //console.log(strainData[key].id);
+
+    // check race
+    if(strain.race.toLowerCase() == desiredRace.toLowerCase() || desiredRace.toLowerCase() == "any"){
+      // race found, check flavor 
+      if(strain.flavors.includes(desiredFlavor)){
+        // flavor found, check effect
+        if(JSON.stringify(strain.effects).includes(desiredEffect)){
+          foundStrains.push(strain);
+        }
+        else{
+          //console.log("strain.effects !includes " + desiredEffect);
+        }
+      }
+      else{
+        //console.log("strain.flavors !includes " + desiredFlavor);
+      }
+    }
+    else{
+      //console.log(strain.race + " != " + desiredRace);
+    }
+
+  });
+
+  console.log('number of found strains: ' + foundStrains.length);
+
+//if statement checking if the strains are greater or less than 0
+
+//append to dom
   
-  //Make Request to EBS API to fetch strain data -AA
-fetch(url)
-  .then(function(data) {
-    return data.json();
-  })
-  .then(function(data) {
-    console.log(data);
+  foundStrains.forEach(function(strain){
+    console.log(strain.id)
+  });
 
-    data.results.forEach(name => {
-      let result =`<li class='list-group-item src="${name.urls.regular}">
-      `;
 
-      $("#strainResults").html(result);
+  
 
+}
+
+function populateFlavors() {
+
+  var queryURL = "https://strainapi.evanbusse.com/zOfVj0g/searchdata/flavors";
+
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+    }).then(function(response) {
+      // Printing the entire object to console
+      //console.log(response);
+
+      response.forEach(function(item){
+        $('#flavor-dropdown').append('<option value="'+ item + '">' + item + '</option>');
     });
-});
+  });
+}
 
-/*function searchStrain(strainid) {
-  //URL for querying API
-  var queryURL = "https://strainapi.evanbusse.com/zOfVj0g";
+function populateEffects() {
+
+  var queryURL = "https://strainapi.evanbusse.com/zOfVj0g/searchdata/effects";
+
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+    }).then(function(response) {
+      response.forEach(function(item){
+        if(item.type == "positive") {
+          $('#effect-dropdown').append('<option value="'+ item.effect + '">' + item.effect + '</option>');
+        }
+    });
+  });
+}
   
-// $.ajax({
-//   url: queryURL,
-//   method: "GET"
-// }).then(function(response) {
-//   console.log(response);
-//   console.log(queryURL);
-//   $("#searchResults").empty();
+function loadStrains() {
 
-
-// // Printing the entire object to console
-// console.log(response);
-// });
-// }
-
-var queryURL = "https://strainapi.evanbusse.com/zOfVj0g/searchdata/flavors";
-
-function getFlavor() {
+    var queryURL = "https://strainapi.evanbusse.com/zOfVj0g//strains/search/all";
+  
     $.ajax({
       url: queryURL,
       method: "GET"
     }).then(function(response) {
-
-      // Printing the entire object to console
-      console.log(response);
-      appendFlavor(response);
+      localStorage.setItem('strainData', JSON.stringify(response));
     });
-
-    function appendFlavor (response) {
-    var option = '';
-    for (var i=0;i<response.length;i++){
-       option += '<option value="'+ response[i] + '">' + response[i] + '</option>';
-    }
-    $('#flavor-dropdown').append(option);
-    }
-  };
-
-getFlavor();
+}
+  
 
 document.getElementById('modal_1').checked = true; // open modal
 document.getElementById('modal_1').checked = false; // close modal
-}
-*/}
