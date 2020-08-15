@@ -1,30 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width", initial-scale=1.0>
-  <title>Reeferal</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic">
-  <link rel="stylesheet" type="text/css" href="Assets/style.css">
-</head>
-<body>
-  <header id="masthead">
-    <div style="overflow: hidden;height: 70px;" class="container"> <!-- For Demo, Represents the body -->
-      <nav class="demo">
-        <a href="index.html" id="logo">Reeferal
-          <img class="cannabis" src="Assets/weed.png" alt="cannabis leaf">
-        <!-- <img class="logo" src="/img/basket.png" /> -->
-        </a>
-        <!-- responsive-->
-        <input id="bmenub" type="checkbox" class="show">
-        <label for="bmenub" class="burger pseudo button">menu</label>
-        <div class="menu">
-          <a href="#" class="pseudo button icon-picture" id="allBtn">Favorite Strains</a>
-          <a href="map.html" class="button icon-puzzle" id="findBtn">Find a Dispensary</a>
-        </div>
-      </nav>
-    </div>
-  </header>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width", initial-scale=1.0>
+    <title>Reeferal</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic">
+    <link rel="stylesheet" type="text/css" href="Assets/style.css">
+  </head>
+  <body onload="onLoad()">
+    <header id="masthead">
+      <div style="overflow: hidden;height: 70px;" class="container"> <!-- For Demo, Represents the body -->
+        <nav class="demo">
+          <a href="index.html" id="logo">Reeferal
+            <img class="cannabis" src="Assets/weed.png" alt="cannabis leaf">
+            <!-- <img class="logo" src="/img/basket.png" /> -->
+          </a>
+          <!-- responsive-->
+          <input id="bmenub" type="checkbox" class="show">
+          <label for="bmenub" class="burger pseudo button">menu</label>
+          <div class="menu">
+            <a href="#" class="pseudo button icon-picture" id="allBtn">Favorite Strains</a>
+            <a href="map.html" class="button icon-puzzle" id="findBtn">Find a Dispensary</a>
+          </div>
+        </nav>
+      </div>
+    </header>
     <!--Search Box-->
     <div id="main-container" class="container">
       <section class="main-section" id="resultsBox">
@@ -33,42 +33,38 @@
         <!--Modal-->
         <div class="modal" id="myModal">
           <input id="modal_1" type="checkbox"/>
-        <label for="modal_1" class="overlay"></label>
-        <article>
-          <header id="modalBox">
-            <h3>Welcome to Reeferal!</h3>
-            <label for="modal_1" class="close">&times;</label>
-          </header>
-          <section class="content">
-            <h3>What's your flavor?</h3>
-            <!--Dropdown Search Parameters-->
-            <select>
-            <option>Type</option>
-            <option>Any</option>
-            <option>Indica</option>
-            <option>Sativa</option>
-            <option>Hybrid</option>
-          </select>
-          <select id ="flavor-dropdown" name="flavor">
-            <option disabled selected hidden>Flavor</option>
-          </select>
-          <select>
-            <option>Effect</option>
-            <option>Any</option>
-            <option>Indica</option>
-            <option>Sativa</option>
-            <option>Hybrid</option>
-            </select>
-          </section>
-          <a class="button" id="submitBtn" href="#" onclick="searchStrains()">Refer some Reefer</a>
-          <label for="modal_1" class="button dangerous">
-            Cancel
-          </label>
-        </article>
-      </div>  
-      <!--Search Results-->
-      <div class="container">
-        <h2>Reefer-ences 🌿</h2>
+          <label for="modal_1" class="overlay"></label>
+          <article>
+            <header id="modalBox">
+              <h3>Welcome to Reeferal!</h3>
+              <label for="modal_1" class="close">&times;</label>
+            </header>
+            <section class="content">
+              <h3>What's your flavor?</h3>
+              <!--Dropdown Search Parameters-->
+              <select id="race-dropdown" name="flavor">
+                <option>Type</option>
+                <option>Any</option>
+                <option>Indica</option>
+                <option>Sativa</option>
+                <option>Hybrid</option>
+              </select>
+              <select id="flavor-dropdown" name="flavor">
+                <option disabled selected hidden>Flavor</option>
+              </select>
+              <select id ="effect-dropdown" name="effect">
+                <option disabled selected hidden>Effect</option>
+              </select>
+            </section>
+            <a class="button" id="submitBtn" href="#" onclick="searchStrains()">Refer some Reefer</a>
+            <label for="modal_1" class="button dangerous">
+              Cancel
+            </label>
+          </article>
+        </div>  
+        <!--Search Results-->
+        <div class="container">
+          <h2>Reefer-ences 🌿</h2>
           <section class="card" id="searchResults"><section>
             <input type="text" class="form-control" id="search" placeholder="Search Photos">
             <button onclick="searchPhotos()">Search</button>
@@ -76,19 +72,16 @@
 
             </div>
             <button id="faveBtn">♡</button>
+            </section>
           </section>
-          </section>
-        </section>
-      </div>
-    <footer>
-      <div class="container">
-      &copy; Copyright 2020 
-      </div>
-    </footer>	
-    <!-- jQuery JS -->
-  <script src="https://code.jquery.com/jquery.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- Code to the JavaScript File -->
-  <script src="Javascript/script.js"></script>  
-</body>
-</html>
+        </div>
+        <footer>
+          <div class="container">
+            &copy; Copyright 2020 
+          </div>
+        </footer>	
+        <!-- jQuery JS -->
+        <script src="https://code.jquery.com/jquery.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!-- Code to the JavaScript File -->
+        <script src="Javascript/script.js"></script>  
