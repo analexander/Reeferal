@@ -1,8 +1,10 @@
 //populates dropdown menus in modal
-function onLoad(){
+function onLoad() {
+
   populateFlavors();
   populateEffects();
   loadStrains();
+  searchStrains();
 }
 
 
@@ -47,7 +49,6 @@ function searchStrains(){
   var strainData = JSON.parse(localStorage.getItem("strainData"));
 
   if(!strainData){
-    console.log('Whoops, cant find strain data');
     return;
   }
 
@@ -55,8 +56,7 @@ function searchStrains(){
 
   keys.forEach(function(key){
     var strain = strainData[key];
-    //console.log(key);
-    //console.log(strainData[key].id);
+    // console.log(strainData[key].id);
 
     // check race
     if(strain.race.toLowerCase() == desiredRace.toLowerCase() || desiredRace.toLowerCase() == "any"){
@@ -65,6 +65,8 @@ function searchStrains(){
         // flavor found, check effect
         if(JSON.stringify(strain.effects).includes(desiredEffect)){
           foundStrains.push(strain);
+
+          displayStrain(key, strain)
         }
         else{
           //console.log("strain.effects !includes " + desiredEffect);
@@ -82,19 +84,24 @@ function searchStrains(){
 
   console.log('number of found strains: ' + foundStrains.length);
 
+  function displayStrain(name, data) {
+    console.log(name, data.race, data.effects.positive, data.effects.negative, data.effects.medical)
+    $("#searchResults").append("<br> Name of strain: " + name + "<br> Type: " + data.race + "<br> Positive effects: " + data.effects.positive + "<br>Negative effects: " + data.effects.negative + "<br> Great if you're suffering from: " + data.effects.medical)
+
+  }
+
 //if statement checking if the strains are greater or less than 0
+// if(foundStrains > 0) {
 
-//append to dom
+// //append to dom
   
-  foundStrains.forEach(function(strain){
-    console.log(strain.id)
-  });
+//   foundStrains.forEach(function(strain){
+//     console.log(strain.race, strain.effects.positive)
 
+//   });
 
-  
-
+// }
 }
-
 function populateFlavors() {
 
   var queryURL = "https://strainapi.evanbusse.com/zOfVj0g/searchdata/flavors";
