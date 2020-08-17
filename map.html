@@ -1,186 +1,260 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Places Search Box</title>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAePxWHEtPzttlFxEKT4ioXXRKCCaUhox4&callback=initAutocomplete&libraries=places&v=weekly"
-      defer
-    ></script>
-    <style type="text/css">
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 100%;
-      }
 
-      /* Optional: Makes the sample page fill the window. */
-      html,
-      body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
+<head>
+  <title>Dispensary Finder</title>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <meta charset="utf-8">
+  <style>
+    #map {
+      height: 100%;
+      background-color: grey;
+    }
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    /* Styling for an info pane that slides out from the left. 
+    * Hidden by default. */
+#panel {
+    height: 100%;
+    width: null;
+    background-color: white;
+    position: fixed;
+    z-index: 1;
+    overflow-x: hidden;
+    transition: all .2s ease-out;
+}
 
-      #description {
-        font-family: Roboto;
-        font-size: 15px;
-        font-weight: 300;
-      }
+.open {
+    width: 250px;
+}
 
-      #infowindow-content .title {
-        font-weight: bold;
-      }
+/* Styling for place details */
+.hero {
+    width: 100%;
+    height: auto;
+    max-height: 166px;
+    display: block;
+}
 
-      #infowindow-content {
-        display: none;
-      }
+.place,
+p {
+    font-family: 'open sans', arial, sans-serif;
+    padding-left: 18px;
+    padding-right: 18px;
+}
 
-      #map #infowindow-content {
-        display: inline;
-      }
+.details {
+    color: darkslategrey;
+}
 
-      .pac-card {
-        margin: 10px 10px 0 0;
-        border-radius: 2px 0 0 2px;
-        box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        outline: none;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-        background-color: #fff;
-        font-family: Roboto;
-      }
+a {
+    text-decoration: none;
+    color: cadetblue;
+}
+  </style>
+</head>
 
-      #pac-container {
-        padding-bottom: 12px;
-        margin-right: 12px;
-      }
+<body>
+  <!-- The slide-out panel for showing place details -->
+<div id="panel"></div>
 
-      .pac-controls {
-        display: inline-block;
-        padding: 5px 11px;
-      }
+  <!-- Map appears here -->
+  <div id="map"></div>
 
-      .pac-controls label {
-        font-family: Roboto;
-        font-size: 13px;
-        font-weight: 300;
-      }
-
-      #pac-input {
-        background-color: #fff;
-        font-family: Roboto;
-        font-size: 15px;
-        font-weight: 300;
-        margin-left: 12px;
-        padding: 0 11px 0 13px;
-        text-overflow: ellipsis;
-        width: 400px;
-      }
-
-      #pac-input:focus {
-        border-color: #4d90fe;
-      }
-
-      #title {
-        color: #fff;
-        background-color: #4d90fe;
-        font-size: 25px;
-        font-weight: 500;
-        padding: 6px 12px;
-      }
-
-      #target {
-        width: 345px;
-      }
-    </style>
-    <script>
-
-// gets user location
-      "use strict";
-
-      // This example adds a search box to a map, using the Google Place Autocomplete
-      // feature. People can enter geographical searches. The search box will return a
-      // pick list containing a mix of places and predicted search terms.
-      // This example requires the Places library. Include the libraries=places
-      // parameter when you first load the API. For example:
-      // <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAePxWHEtPzttlFxEKT4ioXXRKCCaUhox4&libraries=places">
-      function initAutocomplete() {
-        const map = new google.maps.Map(document.getElementById("map"), {
-          center: {
-            lat: 41.881832,
-            lng: -87.623177
-          },
-          zoom: 13,
-          mapTypeId: "roadmap"
-        }); // Create the search box and link it to the UI element.
-
-        const input = document.getElementById("pac-input");
-        const searchBox = new google.maps.places.SearchBox(input);
-        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input); // Bias the SearchBox results towards current map's viewport.
-
-        map.addListener("bounds_changed", () => {
-          searchBox.setBounds(map.getBounds());
-        });
-        let markers = []; // Listen for the event fired when the user selects a prediction and retrieve
-        // more details for that place.
-
-        searchBox.addListener("places_changed", () => {
-          const places = searchBox.getPlaces();
-
-          if (places.length == 0) {
-            return;
-          } // Clear out the old markers.
-
-          markers.forEach(marker => {
-            marker.setMap(null);
-          });
-          markers = []; // For each place, get the icon, name and location.
-
-          const bounds = new google.maps.LatLngBounds();
-          places.forEach(place => {
-            if (!place.geometry) {
-              console.log("Returned place contains no geometry");
-              return;
-            }
-
-            const icon = {
-              url: place.icon,
-              size: new google.maps.Size(71, 71),
-              origin: new google.maps.Point(0, 0),
-              anchor: new google.maps.Point(17, 34),
-              scaledSize: new google.maps.Size(25, 25)
-            }; // Create a marker for each place.
-
-            markers.push(
-              new google.maps.Marker({
-                map,
-                icon,
-                title: place.name,
-                position: place.geometry.location
-              })
-            );
-
-            if (place.geometry.viewport) {
-              // Only geocodes have viewport.
-              bounds.union(place.geometry.viewport);
-            } else {
-              bounds.extend(place.geometry.location);
-            }
-          });
-          map.fitBounds(bounds);
-        });
-      }
-    </script>
-  </head>
-  <body>
-      <p id="demo"></p>
-    <input
-      id="pac-input"
-      class="controls"
-      type="text"
-      placeholder="Search Box"
-    />
-    <div id="map"></div>
-  </body>
+</body>
 </html>
+
+<script>
+
+let pos;
+let map;
+let bounds;
+let infoWindow;
+let currentInfoWindow;
+let service;
+let infoPane;
+function initMap() {
+    // Initialize variables
+    bounds = new google.maps.LatLngBounds();
+    infoWindow = new google.maps.InfoWindow;
+    currentInfoWindow = infoWindow;
+    /*Add a generic sidebar */
+    infoPane = document.getElementById('panel');
+
+    // Try HTML5 geolocation
+    if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(position => {
+        pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+        };
+        map = new google.maps.Map(document.getElementById('map'), {
+        center: pos,
+        zoom: 15
+        });
+        bounds.extend(pos);
+
+        infoWindow.setPosition(pos);
+        infoWindow.setContent('Location found.');
+        infoWindow.open(map);
+        map.setCenter(pos);
+
+        /*Call the Places Nearby Search */
+        getNearbyPlaces(pos);
+    }, () => {
+        // Browser supports geolocation, but user has denied permission
+        handleLocationError(true, infoWindow);
+    });
+    } else {
+    // Browser doesn't support geolocation
+    handleLocationError(false, infoWindow);
+    }
+}
+
+// Handle a geolocation error
+function handleLocationError(browserHasGeolocation, infoWindow) {
+    // Set default location to Chicago, Illinois
+    pos = {lat: 41.8781, lng: -87.623177};
+    map = new google.maps.Map(document.getElementById('map'), {
+    center: pos,
+    zoom: 15
+    });
+
+    // Display an InfoWindow at the map center
+    infoWindow.setPosition(pos);
+    infoWindow.setContent(browserHasGeolocation ?
+    'Geolocation permissions denied. Using default location.' :
+    'Error: Your browser doesn\'t support geolocation.');
+    infoWindow.open(map);
+    currentInfoWindow = infoWindow;
+
+// Call Places Nearby Search on the default location
+getNearbyPlaces(pos);
+}
+// Perform a Places Nearby Search Request
+function getNearbyPlaces(position) {
+    let request = {
+    location: position,
+    rankBy: google.maps.places.RankBy.DISTANCE,
+    keyword: 'dispensary'
+    };
+
+    service = new google.maps.places.PlacesService(map);
+    service.nearbySearch(request, nearbyCallback);
+}
+
+// Handle the results (up to 20) of the Nearby Search
+function nearbyCallback(results, status) {
+    if (status == google.maps.places.PlacesServiceStatus.OK) {
+    createMarkers(results);
+    }
+}
+
+// Set markers at the location of each place result
+function createMarkers(places) {
+    places.forEach(place => {
+    let marker = new google.maps.Marker({
+        position: place.geometry.location,
+        map: map,
+        title: place.name
+    });
+
+    // Add click listener to each marker
+google.maps.event.addListener(marker, 'click', () => {
+    let request = {
+    placeId: place.place_id,
+    fields: ['name', 'formatted_address', 'geometry', 'rating',
+        'website', 'photos']
+    };
+
+    /* Only fetch the details of a place when the user clicks on a marker.
+    * If we fetch the details for all place results as soon as we get
+    * the search response, we will hit API rate limits. */
+    service.getDetails(request, (placeResult, status) => {
+    showDetails(placeResult, marker, status)
+    });
+});
+
+    // Adjust the map bounds to include the location of this marker
+    bounds.extend(place.geometry.location);
+    });
+    /* Once all the markers have been placed, adjust the bounds of the map to
+    * show all the markers within the visible area. */
+    map.fitBounds(bounds);
+}
+
+// Builds an InfoWindow to display details above the marker
+function showDetails(placeResult, marker, status) {
+    if (status == google.maps.places.PlacesServiceStatus.OK) {
+    let placeInfowindow = new google.maps.InfoWindow();
+    placeInfowindow.setContent('<div><strong>' + placeResult.name +
+        '</strong><br>' + 'Rating: ' + placeResult.rating + '</div>');
+    placeInfowindow.open(marker.map, marker);
+    currentInfoWindow.close();
+    currentInfoWindow = placeInfowindow;
+    showPanel(placeResult);
+    } else {
+    console.log('showDetails failed: ' + status);
+    }
+}
+
+// Displays place details in a sidebar
+function showPanel(placeResult) {
+    // If infoPane is already open, close it
+    if (infoPane.classList.contains("open")) {
+    infoPane.classList.remove("open");
+    }
+
+    // Clear the previous details
+    while (infoPane.lastChild) {
+    infoPane.removeChild(infoPane.lastChild);
+    }
+
+    // Add the primary photo, if there is one
+if (placeResult.photos != null) {
+    let firstPhoto = placeResult.photos[0];
+    let photo = document.createElement('img');
+    photo.classList.add('hero');
+    photo.src = firstPhoto.getUrl();
+    infoPane.appendChild(photo);
+}
+
+    // Add place details with text formatting
+    let name = document.createElement('h1');
+    name.classList.add('place');
+    name.textContent = placeResult.name;
+    infoPane.appendChild(name);
+    if (placeResult.rating != null) {
+    let rating = document.createElement('p');
+    rating.classList.add('details');
+    rating.textContent = `Rating: ${placeResult.rating} \u272e`;
+    infoPane.appendChild(rating);
+    }
+    let address = document.createElement('p');
+    address.classList.add('details');
+    address.textContent = placeResult.formatted_address;
+    infoPane.appendChild(address);
+    if (placeResult.website) {
+    let websitePara = document.createElement('p');
+    let websiteLink = document.createElement('a');
+    let websiteUrl = document.createTextNode(placeResult.website);
+    websiteLink.appendChild(websiteUrl);
+    websiteLink.title = placeResult.website;
+    websiteLink.href = placeResult.website;
+    websitePara.appendChild(websiteLink);
+    infoPane.appendChild(websitePara);
+    }
+
+    // Open the infoPane
+    infoPane.classList.add("open");
+}
+</script>
+<!--Load the Places Library -->
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAePxWHEtPzttlFxEKT4ioXXRKCCaUhox4&libraries=places&callback=initMap"></script>
+    
+      <!-- Created with help from https://codelabs.developers.google.com/ -->
