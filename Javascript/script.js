@@ -83,24 +83,20 @@ function searchStrains(){
   });
 
   console.log('number of found strains: ' + foundStrains.length);
+  // $("#searchResults").prepend("<p> Number of strains found: " + foundStrains.length);
 
   function displayStrain(name, data) {
-    console.log(name, data.race, data.effects.positive, data.effects.negative, data.effects.medical)
-    $("#searchResults").append("<br> Name of strain: " + name + "<br> Type: " + data.race + "<br> Positive effects: " + data.effects.positive + "<br>Negative effects: " + data.effects.negative + "<br> Great if you're suffering from: " + data.effects.medical)
+    var $strainDataDiv = $("<div>");
+    $strainDataDiv.addClass("strain-data");
+    $("#searchResults").append($strainDataDiv);
+    var nameofStrain = ("<p>Name of strain: " + name + "</p>");
+    var race = ("<p>Type: " + data.race + "</p>");
+    var posEffects = ("<p>Positive effects: " + data.effects.positive + "</p>");
+    var negEffects = ("<p>Negative effects: " + data.effects.negative + "</p>");
+    var medEffects = ("<p>Recommended if you suffer from: " + data.effects.medical + "</p>");
+    $strainDataDiv.append(nameofStrain, race, posEffects, negEffects, medEffects);
 
   }
-
-//if statement checking if the strains are greater or less than 0
-// if(foundStrains > 0) {
-
-// //append to dom
-  
-//   foundStrains.forEach(function(strain){
-//     console.log(strain.race, strain.effects.positive)
-
-//   });
-
-// }
 }
 function populateFlavors() {
 
