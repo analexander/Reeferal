@@ -12,9 +12,9 @@ body {
 }
 
 .container {
-    min-height:100%;
+    min-height: 100%;
     width: 100%;
-    max-width: 960px;
+    max-width: 100%;
     margin: 0 auto;
     clear: both;
     position: relative;
@@ -91,6 +91,38 @@ nav a:first-child {
 .main-section {
     float: left;
     width: 80vw;
+    max-width: 80%;
+    padding: 50px;
+    margin: 0 0 40px;
+    background: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 4px 4px 15px 2px #333333;
+    display: flex;
+    flex-direction: column;
+    min-height: 30vh;
+}
+
+#cardFind {
+    border: none;
+}
+
+/*might not need*/
+#cardResults {
+    border: gray;
+}
+
+#queryBtn {
+    font-size: 200%;
+    margin-left: 20%;
+    margin-right: 20%;
+    background-color:  #c9c9c9;
+    align-content: center;
+    position: flex;
+}
+
+#mainChild {
+    float: left;
+    width: 80vw;
     max-width: 650px;
     padding: 30px;
     margin: 0 0 40px;
@@ -99,30 +131,39 @@ nav a:first-child {
     box-shadow: 4px 4px 15px 2px #333333;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: flex;
 }
 
-#queryBtn {
-    font-size: 200%;
-    margin-left: 20%;
-    margin-right: 20%;
-    background-color:  #c9c9c9;
-}
 
-#resultsBox {
-    width: 80vw;
+#mainBox {
+    max-width: 500vw;
     align-content: center;
-    margin-left: 200px;
-    margin-right: 200px;
-    height: 80vh;
-    margin-top: 20%;
-    margin-bottom: 150px;
+    margin-left: 125px;
+    margin-right: 100px;
+    margin-top: 10%;
+    margin-bottom: 25px;
     border-radius: 15px;
-    padding-top: 100px;
+    padding-top: 50px;
+    padding-bottom: 50px;
     position: relative;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    max-height: fit-content
+}
+
+#resultsBox {
+    max-width: 500vw;
+    align-content: center;
+    margin-left: 125px;
+    margin-right: 100px;
+    margin-top: 5%;
+    margin-bottom: 150px;
+    border-radius: 15px;
+    padding-top: 5s0px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    max-height: flex;
 }
 /*Nav Title*/
 .label {
@@ -141,6 +182,7 @@ h2, h3 {
     background-color: #4ea56f;
     color: white;
     text-align: center;
+    width: 50vw;
 }
 
 .burger.pseudo.button {
@@ -158,6 +200,10 @@ h2, h3 {
     margin-top: 0px;
     background-color: #e9b0b0;
     font-size: 20px;
+}
+
+p {
+    font-weight: bold;
 }
 
 /*Footer*/
@@ -247,11 +293,13 @@ footer {
         max-width: 550px;
         height: 80vh;
         width: 80vw;
+        margin-left: 20%;
+        margin-right: 20%;
     }
 
     #resultsBox {
         height: flex;
-        width: 80vw;
+        width: auto;
         margin-left: 10%;
         margin-right: 20%;
         margin-top: 20%;
