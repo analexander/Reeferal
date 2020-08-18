@@ -68,7 +68,12 @@ function searchStrains(){
   console.log('number of found strains: ' + foundStrains.length);
   function displayStrain(name, data) {
     console.log(name, data.race, data.effects.positive, data.effects.negative, data.effects.medical)
-    $("#searchResults").append(`<div> <br> Name of strain: ${name}<br> Type: ${data.race}<br> Positive effects: ${data.effects.positive}<br>Negative effects: ${data.effects.negative}<br> Great if you're suffering from: ${data.effects.medical} <br> <button id="faveBtn">♡</button></div>`)
+    $("#searchResults").append(`<div> <br> Name of strain: ${name}
+    <br> Type: ${data.race} </br>
+    <br> Positive effects: ${data.effects.positive} </br>
+    <br>Negative effects: ${data.effects.negative} </br>
+    <br> Great if you're suffering from: ${data.effects.medical} </br>
+    <br> <button id="faveBtn">♡</button> </br> </div>`)
   }
 //if statement checking if the strains are greater or less than 0
 // if(foundStrains > 0) {
