@@ -19,7 +19,7 @@
           <input id="bmenub" type="checkbox" class="show">
           <label for="bmenub" class="burger pseudo button">menu</label>
           <div class="menu">
-            <a href="#" class="pseudo button icon-picture" id="allBtn">Favorite Strains</a>
+            <a href="favorites.html" class="pseudo button icon-picture" id="allBtn">Favorite Strains</a>
             <a href="map.html" class="button icon-puzzle" id="findBtn">Find a Dispensary</a>
           </div>
         </nav>
@@ -27,9 +27,11 @@
     </header>
     <!--Search Box-->
     <div id="main-container" class="container">
-      <section class="main-section" id="resultsBox">
+      <section class="main-section" id="mainBox">
         <!--Show modal button-->
-        <label for="modal_1" class="button" id="queryBtn">Find Your Best Bud<img class="bud" src="Assets/bestbud.png" alt="hands holding plant"></label>
+        <article class="cardFind">
+          <button for="modal_1" class="button" id="queryBtn">Find Your Best Bud<img class="bud" src="Assets/bestbud.png" alt="hands holding plant"></button>
+        </article>
         <!--Modal-->
         <div class="modal" id="myModal">
           <input id="modal_1" type="checkbox"/>
@@ -56,32 +58,31 @@
                 <option disabled selected hidden>Effect</option>
               </select>
             </section>
-            <a class="button" id="submitBtn" href="#" onclick="searchStrains()">Refer some Reefer</a>
-            <label for="modal_1" class="button dangerous">
-              Cancel
-            </label>
+            <a class="button" id="submitBtn" href="#" onclick="searchStrains()">Refer Some Reefer</a>
           </article>
         </div>
+      </section>
         <!--Search Results-->
-        <div class="container">
-          <h2>Reefer-ences 🌿</h2>
-          <section class="card" id="searchResults"><section>
-            <input type="text" class="form-control" id="search" placeholder="Search Photos">
-            <button onclick="searchPhotos()">Search</button>
-            <div id="photoResult">
-
-            </div>
-            <button id="faveBtn">♡</button>
+          <section class="main-section" id="resultsBox">
+            <div class="container">
+            <h2>Reeferences</h2>
+            <section class="cardResults" id="searchResults">
+              <h5></h5>
+             <div id="photoResult">
+              
+              </div>
+              </section>
             </section>
           </section>
-        </div>
         <footer>
           <div class="container">
-            &copy; Copyright 2020 
+            &copy; Copyright 2020
           </div>
-        </footer>	
+        </footer>
         <!-- jQuery JS -->
         <script src="https://code.jquery.com/jquery.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <!-- Code to the JavaScript File -->
-        <script src="Javascript/script.js"></script>  
+        <script src="Javascript/script.js"></script>
+</body>
+</html>
