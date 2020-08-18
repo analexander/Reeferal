@@ -25,7 +25,7 @@ function searchPhotos() {
           <img src="${photo.urls.small}">
           <a href="${photo.links.download}">
         `;
-        $("#photoResult").append(result);
+        $("#photoResult").html(result);
     });
 });
 }
