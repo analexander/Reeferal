@@ -6,7 +6,6 @@ function onLoad() {
   populateEffects();
   loadStrains();
   searchStrains();
-  // searchPhotos();
 }
 
 //Establishes query URL and API Key for --Upsplash--
@@ -90,7 +89,6 @@ function loadStrains() {
     localStorage.setItem('strainData', JSON.stringify(response));
     
     var strainCount = Object.keys(response).length;
-    console.log("count: " + strainCount);
 
     // load photos
     // false = don't get photos from API call. This way you don't need to load 'x' amount of random photos.
@@ -101,15 +99,9 @@ function loadStrains() {
         url: "https://api.unsplash.com/photos/random?query=cannabis,nug&count="+strainCount+"&client_id=7a5945QYBOBjj4CdltaYsVVS7U5ERTuHio86tpRdyd0",
         method: "GET"
       }).then(function(response) {
-      	console.log('Setting Local Storage... (Number of Photos Found:' + response.length + ')');
         localStorage.setItem('strainPhotos', JSON.stringify(response));
       });
     }
-    else {
-    console.log('Not Loading Photos (due to limited API calls).');
-    console.log('Current Photo Count: ' + JSON.parse(localStorage.getItem('strainPhotos')).length);
-    }
-    
   });
 }
 document.getElementById('modal_1').checked = true; // open modal
