@@ -77,6 +77,8 @@ function searchStrains(){
 //     console.log(strain.race, strain.effects.positive)
 //   });
 // }
+  // $("#searchResults").prepend("<p> Number of strains found: " + foundStrains.length);
+
 }
 
 function populateFlavors() {
