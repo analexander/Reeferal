@@ -138,7 +138,10 @@ nav a:first-child {
 #mainBox {
     max-width: 500vw;
     align-content: center;
-    margin: unset;
+    margin-left: 125px;
+    margin-right: 100px;
+    margin-top: 10%;
+    margin-bottom: 25px;
     border-radius: 15px;
     padding-top: 50px;
     padding-bottom: 50px;
