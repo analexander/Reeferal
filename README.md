@@ -16,6 +16,13 @@ Users are able to bookmark their favorite strains and reference them later  as w
 * Users may favorite their preferred strains and reference it later in the favorites tab.
 * Users may locate dispensaries in their area underneath the "Find Dispensaries" tab in the navigation menu.
 
+## User Story:
+AS A marijuana consummer
+
+I WANT to research marijuana strains
+
+So THAT I can find the strains that best suit my needs and tastes.
+
 ## Powered By:
 * [Picnic CSS](https://picnicss.com/)
 
