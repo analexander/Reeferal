@@ -64,7 +64,7 @@ nav a:first-child {
     border-left: 0 none;
 }
 
-.cannabis, .bud {
+.cannabis, .bud, .book {
     width: 40px;
     height: 40px;
     margin-right: 5px;
@@ -170,8 +170,12 @@ nav a:first-child {
     position: absolute;
 }
 
+h2 {
+    font-size: 45px; 
+}
+
 h2, h3 {
-    text-align: center;    
+    text-align: center;
 }
 /*Photo Box*/
 #modal {
