@@ -2,10 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width", initial-scale=1.0>
-    <title>Reeferal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic">
     <link rel="stylesheet" type="text/css" href="Assets/style.css">
+    <title>Reeferal</title>
   </head>
   <body onload="onLoad()">
     <header id="masthead">
@@ -19,14 +19,15 @@
           <input id="bmenub" type="checkbox" class="show">
           <label for="bmenub" class="burger pseudo button">menu</label>
           <div class="menu">
+            <a href="favorites.html" class="pseudo button icon-picture" id="allBtn">Favorite Strains</a>
             <a href="map.html" class="button icon-puzzle" id="findBtn">Find a Dispensary</a>
           </div>
         </nav>
       </div>
     </header>
     <!--Search Box-->
-    <div id="main-container" class="container">
-      <section class="main-section" id="mainBox">
+    <section id="main-container" class="container">
+      <article class="main-section" id="mainBox">
         <!--Show modal button-->
         <article class="cardFind">
           <label for="modal_1" class="button" id="queryBtn">Find Your Best Bud<img class="bud" src="Assets/bestbud.png" alt="hands holding plant"></button>
@@ -61,23 +62,21 @@
           </article>
         </div>
       </section>
-        <!--Search Results-->
-          <section class="main-section" id="resultsBox">
-            <div class="container">
-            <h2>Reeferences<img class="book" src="Assets/book.png" alt="book with image of a leaf"></h2>
-            <section class="cardResults" id="searchResults">
-              <h5></h5>
-             <div id="photoResult">
-              
-              </div>
-              </section>
-            </section>
+      <section class="main-section" id="resultsBox">
+        <div class="container">
+        <h2>Reeferences</h2>
+        <section class="cardResults" id="searchResults">
+          <h5></h5>
+         <div id="photoResult">
+          
+          </div>
           </section>
+        </section>
+      </section>
+        <!--Search Results-->
         <footer>
           <div class="container">
             &copy; Copyright 2020
-            <div>Icons made by <a href="https://www.flaticon.com/authors/those-icons" title="Those Icons">Those Icons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
-            <div>Icons made by <a href="https://www.flaticon.com/free-icon/book_2075150?term=cannabis&page=2&position=9" title="surang">surang</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
           </div>
         </footer>
         <!-- jQuery JS -->

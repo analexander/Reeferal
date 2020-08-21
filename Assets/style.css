@@ -12,12 +12,11 @@ body {
 }
 
 .container {
-    min-height: 100%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    min-width: 480px;
+    padding: 20px;
     width: 100%;
-    max-width: 100%;
-    margin: 0 auto;
-    clear: both;
-    position: relative;
 }
 
 #masthead {
@@ -64,7 +63,7 @@ nav a:first-child {
     border-left: 0 none;
 }
 
-.cannabis, .bud, .book {
+.cannabis, .bud {
     width: 40px;
     height: 40px;
     margin-right: 5px;
@@ -92,7 +91,8 @@ nav a:first-child {
     float: left;
     width: 80vw;
     max-width: 80%;
-    padding: 50px;
+    padding: 5
+    0px;
     margin: 0 0 40px;
     background: #fff;
     border: 1px solid #ddd;
@@ -170,12 +170,8 @@ nav a:first-child {
     position: absolute;
 }
 
-h2 {
-    font-size: 45px; 
-}
-
 h2, h3 {
-    text-align: center;
+    text-align: center;    
 }
 /*Photo Box*/
 #modal {
@@ -293,6 +289,10 @@ footer {
         margin: 0 auto; 
     }
 
+    h2, h3 {
+        font-size: 40px;
+  }
+
     .main-section {
         max-width: 550px;
         height: 80vh;
@@ -328,12 +328,14 @@ footer {
     }
 
     .main-section {
+        min-width: 300px;
         max-width: 100%;
         margin-right: 15px;
         margin-left: 5px;
     }
 
     #resultsBox {
+        min-width: 300px;
         height: flex;
         width: 80vw;
         margin-left: 20%;

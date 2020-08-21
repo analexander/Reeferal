@@ -55,7 +55,6 @@ function searchStrains(){
 
   }
 }
-
 function populateFlavors() {
   var queryURL = "https://strainapi.evanbusse.com/zOfVj0g/searchdata/flavors";
   $.ajax({
