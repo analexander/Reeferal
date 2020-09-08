@@ -15,6 +15,7 @@ function searchPhotos()
 
 //strain API functions
 function searchStrains(){
+  $("#searchResults").empty();
   var desiredRace = $("#race-dropdown option:selected").text();
   var desiredFlavor = $("#flavor-dropdown option:selected").text();
   var desiredEffect = $("#effect-dropdown option:selected").text();
@@ -39,22 +40,21 @@ function searchStrains(){
     }
   });
 
-  function displayStrain(name, data) {
-    var photos = JSON.parse(localStorage.getItem('strainPhotos'));
-    var photo = photos[Math.floor(Math.random() * photos.length)];
-    var $strainDataDiv = $("<div>");
-    $strainDataDiv.addClass("strain-data");
-    $("#searchResults").append($strainDataDiv);
-    var nameofStrain = ("<p>Name of strain: " + name + "</p>");
-    var race = ("<p>Type: " + data.race + "</p>");
-    var posEffects = ("<p>Positive effects: " + data.effects.positive + "</p>");
-    var negEffects = ("<p>Negative effects: " + data.effects.negative + "</p>");
-    var medEffects = ("<p>Recommended if you suffer from: " + data.effects.medical + "</p>" + "<hr></hr>");
-    var photo = '<img src="'+photo.urls.small+'">';
-    $strainDataDiv.append(photo, nameofStrain, race, posEffects, negEffects, medEffects);
-
+    function displayStrain(name, data) {
+      var photos = JSON.parse(localStorage.getItem('strainPhotos'));
+      var photo = photos[Math.floor(Math.random() * photos.length)];
+      var $strainDataDiv = $("<div>");
+      $strainDataDiv.addClass("strain-data");
+      $("#searchResults").append($strainDataDiv);
+      var nameofStrain = ("<p>Name of strain: " + name + "</p>");
+      var race = ("<p>Type: " + data.race + "</p>");
+      var posEffects = ("<p>Positive effects: " + data.effects.positive + "</p>");
+      var negEffects = ("<p>Negative effects: " + data.effects.negative + "</p>");
+      var medEffects = ("<p>Recommended if you suffer from: " + data.effects.medical + "</p>" + "<hr></hr>");
+      var photo = '<img src="'+photo.urls.small+'">';
+      $strainDataDiv.append(photo, nameofStrain, race, posEffects, negEffects, medEffects);
+    }
   }
-}
 
 function populateFlavors() {
   var queryURL = "https://strainapi.evanbusse.com/zOfVj0g/searchdata/flavors";
@@ -104,5 +104,6 @@ function loadStrains() {
     }
   });
 }
+
 document.getElementById('modal_1').checked = true; // open modal
 document.getElementById('modal_1').checked = false; // close modal
